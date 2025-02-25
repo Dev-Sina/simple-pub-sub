@@ -14,9 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Application\PubSub.Application.csproj" />
-    <ProjectReference Include="..\Domain\PubSub.Domain.csproj" />
-    <ProjectReference Include="..\Infrastructure\PubSub.Infrastructure.csproj" />
+    <ProjectReference Include="..\PubSub.Application\PubSub.Application.csproj" />
+    <ProjectReference Include="..\PubSub.Domain\PubSub.Domain.csproj" />
+    <ProjectReference Include="..\PubSub.Infrastructure\PubSub.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

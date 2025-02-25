@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35818.85
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PubSub.Presentation", "PubSub.Presentation.csproj", "{A431D05A-30A6-4DDE-B4E4-C0DE7A7B68B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PubSub.Presentation", "PubSub.Presentation\PubSub.Presentation.csproj", "{A431D05A-30A6-4DDE-B4E4-C0DE7A7B68B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PubSub.Domain", "..\Domain\PubSub.Domain.csproj", "{5EE31D50-542B-4588-B8C3-D6C68B1D7795}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PubSub.Domain", "PubSub.Domain\PubSub.Domain.csproj", "{5EE31D50-542B-4588-B8C3-D6C68B1D7795}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PubSub.Infrastructure", "..\Infrastructure\PubSub.Infrastructure.csproj", "{369DBA61-68E6-4599-A958-2CEC40540BE1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PubSub.Infrastructure", "PubSub.Infrastructure\PubSub.Infrastructure.csproj", "{369DBA61-68E6-4599-A958-2CEC40540BE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PubSub.Application", "..\Application\PubSub.Application.csproj", "{567034A9-7FA3-4515-BC53-F047F5D832E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PubSub.Application", "PubSub.Application\PubSub.Application.csproj", "{567034A9-7FA3-4515-BC53-F047F5D832E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
