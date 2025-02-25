@@ -1,26 +1,15 @@
 ﻿using PubSub.Application.Events;
 using PubSub.Application.Interfaces;
+using System.Collections.Concurrent;
 using System.Reflection;
 
 namespace PubSub.Application.Services;
 
-public class EventBus : IEventBus
+public class EventBus
 {
-    private readonly Dictionary<Type, List<object>> _handlers = new();
+    private readonly ConcurrentDictionary<Type, ConcurrentBag<object>> _handlers = new();
 
-    public async Task PublishAsync<T>(T @event) where T : IEvent
-    {
-        var eventType = typeof(T);
-        if (_handlers.ContainsKey(eventType))
-        {
-            foreach (var handler in _handlers[eventType])
-            {
-                await ((IEventHandler<T>)handler).HandleAsync(@event);
-            }
-        }
-    }
-
-    public void AutoRegisterSubscribers()
+    public EventBus()
     {
         var assemblies = AppDomain.CurrentDomain.GetAssemblies().ToList();
 
@@ -52,11 +41,25 @@ public class EventBus : IEventBus
             var handlerInterface = type.GetInterfaces().First(i => i.GetGenericTypeDefinition() == typeof(IEventHandler<>));
             var eventType = handlerInterface.GetGenericArguments()[0];
 
-            if (!_handlers.ContainsKey(eventType))
+            _handlers.AddOrUpdate(eventType,
+                _ => new ConcurrentBag<object> { handlerInstance },
+                (_, existingHandlers) =>
+                {
+                    existingHandlers.Add(handlerInstance);
+                    return existingHandlers;
+                });
+        }
+    }
+
+    public async Task PublishAsync<T>(T @event) where T : IEvent
+    {
+        var eventType = typeof(T);
+        if (_handlers.ContainsKey(eventType))
+        {
+            foreach (var handler in _handlers[eventType])
             {
-                _handlers[eventType] = new List<object>();
+                await ((IEventHandler<T>)handler).HandleAsync(@event);
             }
-            _handlers[eventType].Add(handlerInstance);
         }
     }
 }
