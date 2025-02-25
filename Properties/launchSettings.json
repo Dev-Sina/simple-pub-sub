@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SimplePubSub": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
